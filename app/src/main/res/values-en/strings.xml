@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">LoftCoin</string>
+
+    <string name="loftcoin" translatable="false">LoftCoin</string>
+
+    <string name="welcome_title_1">Buying and selling</string>
+    <string name="welcome_title_2">Cryptocurrency rate</string>
+    <string name="welcome_title_3">Currency converter</string>
+    <string name="welcome_subtitle_1">Buy when cheap, sell when expensive.</string>
+    <string name="welcome_subtitle_2">Watch the exchange rate and respond to price changes in time.</string>
+    <string name="welcome_subtitle_3">Find out how much bitcoin broadcast in 1.23.</string>
+    <string name="welcome_start_btn">To begin</string>
+
+
+</resources>
