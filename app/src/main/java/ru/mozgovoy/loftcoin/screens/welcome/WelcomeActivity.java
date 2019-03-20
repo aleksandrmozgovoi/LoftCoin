@@ -36,8 +36,8 @@ public class WelcomeActivity extends AppCompatActivity {
     @BindView(R.id.start_btn)
     Button startBtn;
 
-    //@BindView(R.id.indicator)
-    //CircleIndicator indicator;
+    @BindView(R.id.indicator)
+    CircleIndicator indicator;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,7 +49,6 @@ public class WelcomeActivity extends AppCompatActivity {
 
         pager.setAdapter(new WelcomePagerAdapter(getSupportFragmentManager()));
 
-        CircleIndicator indicator = (CircleIndicator) findViewById(R.id.indicator);
         indicator.setViewPager(pager);
 
         startBtn.setOnClickListener(new View.OnClickListener() {

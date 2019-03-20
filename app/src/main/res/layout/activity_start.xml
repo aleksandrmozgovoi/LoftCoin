@@ -13,7 +13,6 @@
         android:layout_height="166dp"
         android:src="@drawable/bg_start_top_corner" />
 
-
     <ImageView
         android:id="@+id/start_outer_circle"
         android:layout_width="160dp"
@@ -52,7 +51,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
-
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -62,9 +60,8 @@
         android:textColor="@color/primary_text_color"
         android:textSize="48sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/start_outer_circle"
+        app:layout_constraintStart_toStartOf="@+id/start_outer_circle"
         app:layout_constraintTop_toBottomOf="@+id/start_outer_circle" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
