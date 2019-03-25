@@ -12,7 +12,6 @@ public class Quote {
     @SerializedName("percent_change_24h")
     public double percentChange24h;
 
-
     @SerializedName("percent_change_7d")
     public double percentChange7d;
 }
