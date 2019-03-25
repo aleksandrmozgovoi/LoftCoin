@@ -23,7 +23,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintEnd_toStartOf="start_btn" />
+        app:layout_constraintEnd_toStartOf="@id/start_btn" />
 
     <Button
         android:id="@+id/start_btn"
