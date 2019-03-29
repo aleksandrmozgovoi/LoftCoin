@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">LoftCoin</string>
-
+    <string name="currency_amount">%s %s</string>
     <string name="loftcoin" translatable="false">LoftCoin</string>
 
     <string name="welcome_title_1">Покупка и продажа</string>
@@ -11,5 +11,13 @@
     <string name="welcome_subtitle_3">Узнай сколько эфира в 1.23 биткоина.</string>
     <string name="welcome_start_btn">Начать</string>
 
+    <string name="main_bottom_navigation_item_accounts">Кошельки</string>
+    <string name="main_bottom_navigation_item_rate">Курс</string>
+    <string name="main_bottom_navigation_item_converter">Конвертер</string>
+    <string name="rate_screen_title">Курс криптовалют</string>
+    <string name="rate_menu_item_sort">Сортировка</string>
+    <string name="rate_menu_item_currency">Валюта</string>
+    <string name="rate_item_percent_change_up" translatable="false">+%.2f%%</string>
+    <string name="rate_item_percent_change_down" translatable="false">%.2f%%</string>
 
 </resources>

@@ -25,7 +25,6 @@
     <color name="transaction_income">@color/green</color>
     <color name="transaction_expense">@color/red</color>
 
-
     <color name="wallet_card_background">#2E2F47</color>
 
     <color name="gray_5">#9C9EB9</color>
