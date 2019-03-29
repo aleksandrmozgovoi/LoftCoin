@@ -20,7 +20,10 @@ import butterknife.ButterKnife;
 import ru.mozgovoy.loftcoin.App;
 import ru.mozgovoy.loftcoin.R;
 import ru.mozgovoy.loftcoin.data.api.Api;
-import ru.mozgovoy.loftcoin.data.api.model.Coin;
+import ru.mozgovoy.loftcoin.data.db.Database;
+import ru.mozgovoy.loftcoin.data.db.model.CoinEntity;
+import ru.mozgovoy.loftcoin.data.db.model.CoinEntityMapper;
+import ru.mozgovoy.loftcoin.data.db.model.CoinEntityMapperImpl;
 import ru.mozgovoy.loftcoin.data.prefs.Prefs;
 
 public class RateFragment extends Fragment implements RateView {
@@ -56,8 +59,10 @@ public class RateFragment extends Fragment implements RateView {
 
         Api api = ((App) getActivity().getApplication()).getApi();
         Prefs prefs = ((App) getActivity().getApplication()).getPrefs();
+        Database database = ((App) getActivity().getApplication()).getDatabase();
+        CoinEntityMapper mapper = new CoinEntityMapperImpl();
 
-        presenter = new RatePresenterImpl(prefs, api);
+        presenter = new RatePresenterImpl(prefs, api, database, mapper);
         adapter = new RateAdapter(prefs);
     }
 
@@ -84,7 +89,7 @@ public class RateFragment extends Fragment implements RateView {
     }
 
     @Override
-    public void setCoins(List<Coin> coins) {
+    public void setCoins(List<CoinEntity> coins) {
         adapter.setItems(coins);
     }
 
