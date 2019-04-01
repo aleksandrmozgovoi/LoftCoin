@@ -2,6 +2,7 @@ package ru.mozgovoy.loftcoin.data.db.room;
 
 import java.util.List;
 
+import io.reactivex.Flowable;
 import ru.mozgovoy.loftcoin.data.db.Database;
 import ru.mozgovoy.loftcoin.data.db.model.CoinEntity;
 
@@ -19,7 +20,7 @@ public class DatabaseImplRoom implements Database {
     }
 
     @Override
-    public List<CoinEntity> getCoins() {
+    public Flowable<List<CoinEntity>> getCoins() {
         return appDatabase.coinDao().getCoins();
     }
 }
