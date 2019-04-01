@@ -1,6 +1,6 @@
 package ru.mozgovoy.loftcoin.data.api;
 
-import retrofit2.Call;
+import io.reactivex.Observable;
 import retrofit2.http.GET;
 import retrofit2.http.Headers;
 import retrofit2.http.Query;
@@ -11,6 +11,6 @@ public interface Api {
 
     @GET("cryptocurrency/listings/latest")
     @Headers("X-CMC_PRO_API_KEY: 40b1f843-c962-4d31-9461-c101a04c18be")
-    Call<RateResponse> rates(@Query("convert") String convert);
+    Observable<RateResponse> rates(@Query("convert") String convert);
 
 }
