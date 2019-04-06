@@ -23,6 +23,8 @@ import ru.mozgovoy.loftcoin.data.db.model.CoinEntity;
 
 public class CurrenciesBottomSheet extends BottomSheetDialogFragment implements CurrenciesAdapterListener {
 
+    public static final String TAG = "CurrenciesBottomSheet";
+
     @BindView(R.id.recycler)
     RecyclerView recycler;
 

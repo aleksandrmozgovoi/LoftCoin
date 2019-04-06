@@ -14,6 +14,7 @@ import butterknife.ButterKnife;
 import ru.mozgovoy.loftcoin.R;
 import ru.mozgovoy.loftcoin.screens.converter.ConverterFragment;
 import ru.mozgovoy.loftcoin.screens.rate.RateFragment;
+import ru.mozgovoy.loftcoin.screens.wallets.WalletsFragment;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -34,12 +35,16 @@ public class MainActivity extends AppCompatActivity {
         bottomNavigation.setOnNavigationItemReselectedListener(menuItem -> {
 
         });
+
+        if (savedInstanceState == null) {
+            bottomNavigation.setSelectedItemId(R.id.menu_item_rate);
+        }
     }
 
     private BottomNavigationView.OnNavigationItemSelectedListener navigationListener = menuItem -> {
         switch (menuItem.getItemId()) {
             case R.id.menu_item_accounts:
-
+                showWalletsFragment();
                 return true;
 
             case R.id.menu_item_rate:
@@ -64,6 +69,14 @@ public class MainActivity extends AppCompatActivity {
 
     private void showConverterFragment() {
         ConverterFragment fragment = new ConverterFragment();
+        FragmentManager fm = getSupportFragmentManager();
+        FragmentTransaction transaction = fm.beginTransaction();
+        transaction.replace(R.id.fragment_container, fragment);
+        transaction.commit();
+    }
+
+    private void showWalletsFragment() {
+        WalletsFragment fragment = new WalletsFragment();
         FragmentManager fm = getSupportFragmentManager();
         FragmentTransaction transaction = fm.beginTransaction();
         transaction.replace(R.id.fragment_container, fragment);
