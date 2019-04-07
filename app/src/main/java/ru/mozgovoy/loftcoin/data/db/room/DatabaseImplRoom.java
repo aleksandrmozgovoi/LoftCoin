@@ -5,6 +5,8 @@ import java.util.List;
 import io.reactivex.Flowable;
 import ru.mozgovoy.loftcoin.data.db.Database;
 import ru.mozgovoy.loftcoin.data.db.model.CoinEntity;
+import ru.mozgovoy.loftcoin.data.db.model.Wallet;
+import ru.mozgovoy.loftcoin.data.db.model.WalletModel;
 
 public class DatabaseImplRoom implements Database {
 
@@ -27,5 +29,15 @@ public class DatabaseImplRoom implements Database {
     @Override
     public CoinEntity getCoin(String symbol) {
         return appDatabase.coinDao().getCoin(symbol);
+    }
+
+    @Override
+    public void saveWallet(Wallet wallet) {
+        appDatabase.walletDao().saveWallet(wallet);
+    }
+
+    @Override
+    public Flowable<List<WalletModel>> getWallets() {
+        return appDatabase.walletDao().getWallets();
     }
 }
