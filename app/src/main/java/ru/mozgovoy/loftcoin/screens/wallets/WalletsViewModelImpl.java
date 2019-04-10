@@ -29,7 +29,7 @@ public class WalletsViewModelImpl extends WalletsViewModel {
 
     private Database database;
     private CompositeDisposable disposables = new CompositeDisposable();
-    static long FIRST_DAY_IN_THIS_YEAR = 1546300800000L;
+    private static long FIRST_DAY_IN_THIS_YEAR = 1546300800000L;
 
     public WalletsViewModelImpl(@NonNull Application application) {
         super(application);
