@@ -29,6 +29,7 @@ public class WalletsViewModelImpl extends WalletsViewModel {
 
     private Database database;
     private CompositeDisposable disposables = new CompositeDisposable();
+    static long FIRST_DAY_IN_THIS_YEAR = 1546300800000L;
 
     public WalletsViewModelImpl(@NonNull Application application) {
         super(application);
@@ -151,9 +152,9 @@ public class WalletsViewModelImpl extends WalletsViewModel {
     private Transaction randomTransaction(Wallet wallet) {
         Random random = new Random();
 
-        long startDate = 1546300800000L;
+
         long nowDate = System.currentTimeMillis();
-        long date = startDate + (long) (random.nextDouble() * (nowDate - startDate));
+        long date = FIRST_DAY_IN_THIS_YEAR + (long) (random.nextDouble() * (nowDate - FIRST_DAY_IN_THIS_YEAR));
 
         double amount = 4 * random.nextDouble();
         boolean amountSign = random.nextBoolean();
