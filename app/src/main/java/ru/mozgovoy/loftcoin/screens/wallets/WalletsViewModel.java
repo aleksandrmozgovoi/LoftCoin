@@ -8,6 +8,7 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import ru.mozgovoy.loftcoin.data.db.model.CoinEntity;
+import ru.mozgovoy.loftcoin.data.db.model.TransactionModel;
 import ru.mozgovoy.loftcoin.data.db.model.WalletModel;
 
 abstract class WalletsViewModel extends AndroidViewModel {
@@ -24,11 +25,13 @@ abstract class WalletsViewModel extends AndroidViewModel {
 
     public abstract LiveData<List<WalletModel>> wallets();
 
+    public abstract LiveData<List<TransactionModel>> transactions();
+
     abstract void getWallets();
 
     abstract void onNewWalletClick();
 
     abstract void onCurrencySelected(CoinEntity coinEntity);
 
-
+    abstract void onWalletChanged(int position);
 }

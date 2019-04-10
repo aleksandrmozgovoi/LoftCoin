@@ -4,6 +4,8 @@ import java.util.List;
 
 import io.reactivex.Flowable;
 import ru.mozgovoy.loftcoin.data.db.model.CoinEntity;
+import ru.mozgovoy.loftcoin.data.db.model.Transaction;
+import ru.mozgovoy.loftcoin.data.db.model.TransactionModel;
 import ru.mozgovoy.loftcoin.data.db.model.Wallet;
 import ru.mozgovoy.loftcoin.data.db.model.WalletModel;
 
@@ -17,4 +19,8 @@ public interface Database {
     void saveWallet(Wallet wallet);
 
     Flowable<List<WalletModel>> getWallets();
+
+    void saveTransaction(List<Transaction> transactions);
+
+    Flowable<List<TransactionModel>> getTransactions(String walletId);
 }
