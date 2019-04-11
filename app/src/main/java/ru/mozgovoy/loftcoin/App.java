@@ -6,6 +6,7 @@ import ru.mozgovoy.loftcoin.data.api.Api;
 import ru.mozgovoy.loftcoin.data.api.ApiInitializer;
 import ru.mozgovoy.loftcoin.data.db.Database;
 import ru.mozgovoy.loftcoin.data.db.DatabaseInitializer;
+import ru.mozgovoy.loftcoin.data.db.realm.DatabaseImplRealm;
 import ru.mozgovoy.loftcoin.data.prefs.Prefs;
 import ru.mozgovoy.loftcoin.data.prefs.PrefsImpl;
 import timber.log.Timber;
@@ -14,7 +15,6 @@ public class App extends Application {
 
     private Prefs prefs;
     private Api api;
-    private Database database;
 
     @Override
     public void onCreate() {
@@ -22,7 +22,7 @@ public class App extends Application {
         Timber.plant(new Timber.DebugTree());
         prefs = new PrefsImpl(this);
         api = new ApiInitializer().init();
-        database = new DatabaseInitializer().init(this);
+        new DatabaseInitializer().init(this);
     }
 
     public Prefs getPrefs() {
@@ -34,7 +34,7 @@ public class App extends Application {
     }
 
     public Database getDatabase() {
-        return database;
+        return new DatabaseImplRealm();
     }
 
 }
