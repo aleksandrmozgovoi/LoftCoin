@@ -124,7 +124,7 @@ public class ConverterViewModelImpl implements ConverterViewModel {
 
     private void convert() {
 
-        if (sourceAmountValue.isEmpty()) {
+        if (sourceAmountValue.isEmpty() || sourceAmountValue.equals(".")) {
             destinationAmount.onNext("");
             return;
         }
