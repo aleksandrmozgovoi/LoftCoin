@@ -28,9 +28,15 @@ import ru.mozgovoy.loftcoin.data.db.model.CoinEntityMapper;
 import ru.mozgovoy.loftcoin.data.db.model.CoinEntityMapperImpl;
 import ru.mozgovoy.loftcoin.data.prefs.Prefs;
 import ru.mozgovoy.loftcoin.utils.Fiat;
+import ru.mozgovoy.loftcoin.work.WorkHelper;
+import ru.mozgovoy.loftcoin.work.WorkHelperImpl;
 import timber.log.Timber;
 
-public class RateFragment extends Fragment implements RateView, Toolbar.OnMenuItemClickListener, CurrencyDialog.CurrencyDialogListener {
+public class RateFragment extends Fragment implements
+        RateView,
+        Toolbar.OnMenuItemClickListener,
+        CurrencyDialog.CurrencyDialogListener,
+        RateAdapter.Listener {
 
     private static final String LAYOUT_MANAGER_STATE = "layout_manager_state";
 
@@ -69,9 +75,11 @@ public class RateFragment extends Fragment implements RateView, Toolbar.OnMenuIt
         Database mainDatabase = ((App) getActivity().getApplication()).getDatabase();
         Database workerDatabase = ((App) getActivity().getApplication()).getDatabase();
         CoinEntityMapper mapper = new CoinEntityMapperImpl();
+        WorkHelper workHelper = new WorkHelperImpl();
 
-        presenter = new RatePresenterImpl(prefs, api, mainDatabase, workerDatabase, mapper);
+        presenter = new RatePresenterImpl(prefs, api, mainDatabase, workerDatabase, mapper, workHelper);
         adapter = new RateAdapter(prefs);
+        adapter.setListener(this);
     }
 
     @Override
@@ -158,5 +166,10 @@ public class RateFragment extends Fragment implements RateView, Toolbar.OnMenuIt
     @Override
     public void invalidateRates() {
         adapter.notifyDataSetChanged();
+    }
+
+    @Override
+    public void onRateLongClick(String symbol) {
+        presenter.onRateLongClick(symbol);
     }
 }
