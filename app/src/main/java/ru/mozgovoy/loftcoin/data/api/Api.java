@@ -7,10 +7,10 @@ import retrofit2.http.Query;
 import ru.mozgovoy.loftcoin.data.api.model.RateResponse;
 
 public interface Api {
-    String CONVERT = "USD,EUR,RUB";
+    String CONVERT = "USD";
 
     @GET("cryptocurrency/listings/latest")
-    @Headers("X-CMC_PRO_API_KEY: 40b1f843-c962-4d31-9461-c101a04c18be")
+    @Headers("X-CMC_PRO_API_KEY: b2be9f71-86ab-4b7e-8b15-6e82e51f1b34")
     Observable<RateResponse> rates(@Query("convert") String convert);
 
 }

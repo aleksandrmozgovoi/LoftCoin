@@ -14,6 +14,7 @@ import ru.mozgovoy.loftcoin.data.db.model.CoinEntity;
 import ru.mozgovoy.loftcoin.data.db.model.CoinEntityMapper;
 import ru.mozgovoy.loftcoin.data.prefs.Prefs;
 import ru.mozgovoy.loftcoin.utils.Fiat;
+import ru.mozgovoy.loftcoin.work.WorkHelper;
 import timber.log.Timber;
 
 public class RatePresenterImpl implements RatePresenter {
@@ -24,6 +25,7 @@ public class RatePresenterImpl implements RatePresenter {
     private Database workerDatabase;
     private CoinEntityMapper coinEntityMapper;
     private CompositeDisposable disposables = new CompositeDisposable();
+    private WorkHelper workHelper;
 
     @Nullable
     private RateView view;
@@ -32,12 +34,14 @@ public class RatePresenterImpl implements RatePresenter {
                              Api api,
                              Database mainDatabase,
                              Database workerDatabase,
-                             CoinEntityMapper coinEntityMapper) {
+                             CoinEntityMapper coinEntityMapper,
+                             WorkHelper workHelper) {
         this.prefs = prefs;
         this.api = api;
         this.mainDatabase = mainDatabase;
         this.workerDatabase = workerDatabase;
         this.coinEntityMapper = coinEntityMapper;
+        this.workHelper = workHelper;
     }
 
     @Override
@@ -116,5 +120,11 @@ public class RatePresenterImpl implements RatePresenter {
         if (view != null) {
             view.invalidateRates();
         }
+    }
+
+    @Override
+    public void onRateLongClick(String symbol) {
+        Timber.d("onRateLongClick: symbol = %s", symbol);
+        workHelper.startSyncRateWorker(symbol);
     }
 }
